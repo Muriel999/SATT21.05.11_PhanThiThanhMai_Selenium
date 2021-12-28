@@ -1,9 +1,6 @@
 package PageObjects.Railway;
 
 import Common.Constant.Constant;
-//import com.sun.org.apache.bcel.internal.Const;
-import PageObjects.Railway.GeneralPage;
-import PageObjects.Railway.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -36,11 +33,9 @@ public class LoginPage extends GeneralPage {
 
     public HomePage login(String username, String password)
     {
-        //submit login credentials
         this.getTxtUsername().sendKeys(username);
         this.getTxtPassword().sendKeys(password);
         this.getBtnLogin().click();
-
         return new HomePage();
     }
 }

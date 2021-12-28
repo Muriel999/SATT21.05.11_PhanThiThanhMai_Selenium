@@ -12,7 +12,7 @@ public class TC003 {
     @BeforeMethod
     public void beforeMethod(){
         System.out.println("Pre-condition");
-        System.setProperty("webdriver.chrome.driver", "D:\\JAVA\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/Executables/chromedriver.exe");
         Constant.WEBDRIVER = new ChromeDriver();
         Constant.WEBDRIVER.manage().window().setSize(new Dimension(1080, 720));
     }
@@ -24,7 +24,7 @@ public class TC003 {
     }
 
     @Test
-    public void TC003(){
+    public void TC03(){
         System.out.println("TC03 - User cannot log into Railway with invalid password \n");
         HomePage homePage = new HomePage();
         homePage.open();

@@ -13,7 +13,7 @@ public class TC002 {
     @BeforeMethod
     public void beforeMethod(){
         System.out.println("Pre-condition");
-        System.setProperty("webdriver.chrome.driver", "D:\\JAVA\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/Executables/chromedriver.exe");
         Constant.WEBDRIVER = new ChromeDriver();
         Constant.WEBDRIVER.manage().window().setSize(new Dimension(1080, 720));
     }

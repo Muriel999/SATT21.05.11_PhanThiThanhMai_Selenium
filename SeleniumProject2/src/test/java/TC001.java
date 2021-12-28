@@ -1,5 +1,4 @@
 import Common.Constant.Constant;
-//import org.apache.http.util.Asserts;
 import PageObjects.Railway.HomePage;
 import PageObjects.Railway.LoginPage;
 import org.openqa.selenium.Dimension;
@@ -13,7 +12,7 @@ public class TC001 {
     @BeforeMethod
     public void beforeMethod(){
         System.out.println("Pre-condition");
-        System.setProperty("webdriver.chrome.driver", "D:\\JAVA\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/Executables/chromedriver.exe");
         Constant.WEBDRIVER = new ChromeDriver();
         Constant.WEBDRIVER.manage().window().setSize(new Dimension(1080, 720));
     }
@@ -34,6 +33,7 @@ public class TC001 {
 
         String actuaMsg = loginPage.login(Constant.USERNAME, Constant.PASSWORD).getWelcomeMessage();
         String expectedMsg = "Welcome " + Constant.USERNAME;
+        System.out.println(expectedMsg);
         Assert.assertEquals(actuaMsg,expectedMsg,"Welcome message is not displayed as expected");
     }
 }

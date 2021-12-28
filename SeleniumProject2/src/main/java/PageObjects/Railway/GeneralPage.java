@@ -10,7 +10,8 @@ public class GeneralPage {
     private final By tabLogout = By.xpath("//div[@id='menu']//a[@href=\"Account/Logout\"]");
     private final By lblWelcomeMessage = By.xpath("//div[@class='account']/strong");
     private final By lblErrorMessage = By.xpath("//p[@class='message error LoginForm']");
-
+    private  final By tabBookTicket = By.xpath("//div[@id='menu']//a[@href=\"/Page/BookTicketPage.cshtml\"]");
+    private final By nameLogin = By.xpath("//li[@class='selected']//a[@href=\"/Account/Login.cshtml\"]//span");
     //Elements
     protected WebElement getTabLogin(){
         return Constant.WEBDRIVER.findElement(tabLogin);
@@ -28,6 +29,15 @@ public class GeneralPage {
         return Constant.WEBDRIVER.findElement(lblErrorMessage);
     }
 
+    protected WebElement getTabBookTicket(){
+        return Constant.WEBDRIVER.findElement(tabBookTicket);
+    }
+
+    protected WebElement getLblNameLogin(){
+        return Constant.WEBDRIVER.findElement(nameLogin);
+    }
+
+
     //methods
     public String getWelcomeMessage()
     {
@@ -39,10 +49,19 @@ public class GeneralPage {
         return this.getLblErrorMessage().getText();
     }
 
+    public String getNameLogin(){ return this.getLblNameLogin().getText();}
+
     public LoginPage gotoLoginpage()
     {
         this.getTabLogin().click();
+        System.out.println("click tab login");
         return new LoginPage();
     }
 
+//   Method BookTicket
+    public BookTicketPage gotoBookticket(){
+        this.getTabBookTicket().click();
+        System.out.println("click tab BookTicket");
+        return new BookTicketPage();
+    }
 }
