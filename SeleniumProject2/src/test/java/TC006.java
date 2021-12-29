@@ -1,5 +1,5 @@
 import Common.Constant.Constant;
-import PageObjects.Railway.BookTicketPage;
+import PageObjects.Railway.HomePage;
 import PageObjects.Railway.LoginPage;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,7 +8,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TC004 {
+import java.util.Optional;
+
+public class TC006 {
     @BeforeMethod
     public void beforeMethod(){
         System.out.println("Pre-condition");
@@ -22,17 +24,19 @@ public class TC004 {
         System.out.println("Post-condition");
         Constant.WEBDRIVER.quit();
     }
-    @Test (description = "TC04 - Login page displays when un-logged User clicks on \"Book ticket\" tab\n")
-    public void TC04(){
-        BookTicketPage bookTicketPage = new BookTicketPage();
-        bookTicketPage.open();
+
+    @Test (description ="TC06 - Additional pages display once user logged in\n" )
+    public void TC06(){
+        HomePage homePage = new HomePage();
+        homePage.open();
 
         LoginPage loginPage = new LoginPage();
+        loginPage.gotoLoginpage();
 
-        String actualTxt = loginPage.getNameLogin();
-        System.out.println(actualTxt);
-        String expectedTxt = "Login";
-        Assert.assertEquals(actualTxt,expectedTxt,"Login page do not displays instead of Book ticket page");
+        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
+        Assert.assertEquals(Optional.of(loginPage.isLogout()), Optional.of(true), "Tab 'Logout' do not display");
+        Assert.assertEquals(Optional.of(loginPage.isChangePass()), Optional.of(true), "Tab 'Change password' do not display");
+        Assert.assertEquals(Optional.of(loginPage.isMyTicket()), Optional.of(true), "Tab 'My ticket' do not display");
     }
 }

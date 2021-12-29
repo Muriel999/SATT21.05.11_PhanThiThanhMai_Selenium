@@ -23,17 +23,17 @@ public class TC003 {
         Constant.WEBDRIVER.quit();
     }
 
-    @Test
+    @Test (description = "TC03 - User cannot log into Railway with invalid password \n" )
     public void TC03(){
-        System.out.println("TC03 - User cannot log into Railway with invalid password \n");
         HomePage homePage = new HomePage();
         homePage.open();
 
-        LoginPage loginPage = homePage.gotoLoginpage();
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(Constant.USERNAME, "matkhausai");
 
-        String actuaMsg = loginPage.login(Constant.USERNAME,"matkhausai").getErrorMessage();
+        String actualMsg = loginPage.getWelcomeMessage();
         String expectedMsg = "Invalid username or password. Please try again.";
-        Assert.assertEquals(actuaMsg,expectedMsg,"Error message is not displayed as expected");
+        Assert.assertEquals(actualMsg,expectedMsg,"Error message is not displayed as expected");
     }
 
 }

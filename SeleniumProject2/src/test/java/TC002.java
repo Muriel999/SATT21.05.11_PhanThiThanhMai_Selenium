@@ -24,17 +24,18 @@ public class TC002 {
         Constant.WEBDRIVER.quit();
     }
 
-    @Test
+    @Test (description = "TC02 - User can't login with blank \"Username\" textbox\n" )
     public void TC02(){
-        System.out.println("TC02 - User can't login with blank \"Username\" textbox\n");
         HomePage homePage = new HomePage();
         homePage.open();
 
-        LoginPage loginPage = homePage.gotoLoginpage();
+        LoginPage loginPage = new LoginPage();
+        loginPage.gotoLoginpage();
+        loginPage.login("", Constant.PASSWORD);
 
-        String actuaMsg = loginPage.login("", Constant.PASSWORD).getErrorMessage();
+        String actualMsg = loginPage.getWelcomeMessage();
         String expectedMsg = "There was a problem with your login and/or errors exist in your form.";
-        Assert.assertEquals(actuaMsg,expectedMsg,"Error message is not displayed as expected");
+        Assert.assertEquals(actualMsg,expectedMsg,"Error message is not displayed as expected");
     }
 }
 

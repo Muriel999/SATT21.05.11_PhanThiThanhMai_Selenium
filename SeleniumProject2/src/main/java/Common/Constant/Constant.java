@@ -9,4 +9,5 @@ public class Constant {
     public static final String BOOKTICKET_URL = "http://www.railway.somee.com/Page/BookTicketPage.cshtml";
     public static final String USERNAME = "thanhmai@gmail.com";
     public static final String PASSWORD = "123456789";
+
 }
