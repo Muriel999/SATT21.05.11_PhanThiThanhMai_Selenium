@@ -1,5 +1,4 @@
 import Common.Constant.Constant;
-import PageObjects.Railway.BookTicketPage;
 import PageObjects.Railway.LoginPage;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,8 +23,6 @@ public class TC004 {
     }
     @Test (description = "TC04 - Login page displays when un-logged User clicks on \"Book ticket\" tab\n")
     public void TC04(){
-        BookTicketPage bookTicketPage = new BookTicketPage();
-        bookTicketPage.open();
 
         LoginPage loginPage = new LoginPage();
 
